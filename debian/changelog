@@ -1,0 +1,227 @@
+libunix-syslog-perl (1.1-3) unstable; urgency=low
+
+  [ gregor herrmann ]
+  * debian/control: Changed: Switched Vcs-Browser field to ViewSVN
+    (source stanza).
+
+  [ Salvatore Bonaccorso ]
+  * debian/control: Changed: Replace versioned (build-)dependency on
+    perl (>= 5.6.0-{12,16}) with an unversioned dependency on perl (as
+    permitted by Debian Policy 3.8.3).
+
+  [ Ansgar Burchardt ]
+  * debian/control: Convert Vcs-* fields to Git.
+
+  [ Salvatore Bonaccorso ]
+  * Change Vcs-Git to canonical URI (git://anonscm.debian.org)
+  * Update Vcs-Browser URL to cgit web frontend
+  * Update Vcs-* headers for switch to salsa.debian.org
+
+  [ gregor herrmann ]
+  * debian/*: update URLs from {search,www}.cpan.org to MetaCPAN.
+
+  [ Xavier Guimard ]
+  * Switch from cdbs to dh:
+    - remove cdbs files
+    - remove cdbs dependency
+    - switch debian/rules to dh
+  * Bump debhelper compatibility to 10
+  * Declare compliance with policy 4.2.0
+  * Change homepage to metacpan
+  * Update debian/copyright format
+  * Add source/format
+  * Add upstream/metadata
+  * Enable autopkgtest
+  * Add myself to uploaders
+
+ -- Xavier Guimard <x.guimard@free.fr>  Fri, 24 Aug 2018 13:57:26 +0200
+
+libunix-syslog-perl (1.1-2) unstable; urgency=medium
+
+  * Depend on ${misc:Depends}.
+  * Update tarball md5sum hint in debian/rules.
+  * Update Vcs-* fields in debian/control(.in) to point to Perl group.
+  * Update local cdbs tweaks:
+    + Strip non-printable chars from copyright-check.mk output.
+    + Relax copyright-check.mk to only warn by default.  Closes:
+      bug#487058, thanks to Lucas Nussbaum.
+    + Fix update-tarball.mk wget options to work with recent wget.
+    + Simplify dependency cleanup slightly (quilt isn't in use here).
+    + Mirror debian/control uploaders changes to debian/control.in.
+  * Update debian/copyright-hints.
+  * Bump debhelper compatibility level to 6.
+  * Semi-auto-update debian/control to update build-dependencies:
+      DEB_AUTO_UPDATE_DEBIAN_CONTROL=yes fakeroot debian/rules clean
+  * Set urgency=medium due to FTBFS bugfix.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Sun, 29 jun 2008 11:18:01 +0200
+
+libunix-syslog-perl (1.1-1) unstable; urgency=low
+
+  [ Gunnar Wolf ]
+
+  * Added myself to uploaders
+  * New upstream release
+
+  [ Jonas Smedegaard ]
+
+  * Bump debhelper compat level and build-dependency to version 5.
+  * Semi-auto-update debian/control to apply changes contained in the above:
+    DEB_AUTO_UPDATE_DEBIAN_CONTROL=yes fakeroot debian/rules clean
+
+ -- Gunnar Wolf <gwolf@debian.org>  Sun, 25 May 2008 14:50:15 -0500
+
+libunix-syslog-perl (1.0-2) unstable; urgency=low
+
+  * Fix multi-lined copyright microformat in debian/copyright.
+  * Update debian/copyright: Debian Perl Team holds copyright for Debian
+    packaging in 2008.
+  * Pass over maintenance of the package to the Perl group: Change Maintainer,
+    and add myself to Uploaders.
+  * Update debian/watch:
+    + Use svn-upgrade (not uupdate).
+    + Use by-dist upstream URL.
+  * Bump up standards-version to 3.7.3 (no changes needed).
+  * Update local cdbs snippets:
+    + Major improvements to update-tarball (but none of them affecting this
+      current packaging).
+    + Major improvements to copyright-check, including new versioned
+      build-dependency on devscripts.  Update debian/copyright_hints.
+    + Drop buildcore.mk override.  Set DEB_AUTO_UPDATE_DEBIAN_CONTROL directly
+      instead when needed.
+    + Update debian/README.cdbs-tweaks to no longer mention buildcore.mk
+      override.
+  * Semi-auto-update debian/control to apply changes contained in the above:
+    DEB_AUTO_UPDATE_DEBIAN_CONTROL=yes fakeroot debian/rules clean
+
+ -- Jonas Smedegaard <dr@jones.dk>  Wed, 19 Mar 2008 02:41:25 +0100
+
+libunix-syslog-perl (1.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * Add Vcs-Svn and Vcs-Browser fields to debian/control.
+  * Move Homepage to own field (from pseudo-field in long description).
+  * Update local cdbs tweaks:
+    + Make sure buildinfo runs only once.
+    + Add new upstream-tarball.mk to implement get-orig-source and more.
+    + Overload buildcore.mk (instead of separate auto-update.mk).
+    + Check copyrights in prebuild (in clean it may choke on not yet
+      cleaned stuff), and make sure it runs only once.
+    + List non-binary files affected if discovering new copyrights.
+    + Add documentation to source as debian/README.cdbs-tweaks.
+    + Have buildinfo.mk depend on buildcore.mk.
+  * Update debian/copyright_hints
+    + Year 2007 added.
+    + License changed to Artistic License 2.0 (from Artistic License).
+  * Rewrite debian/copyright:
+    + Conform to proposed new format at
+      http://wiki.debian.org/Proposals/CopyrightFormat .
+    + Include the full contents of Artistic License 2.0.
+    + Drop obsolete comment on alternate location for newest source.
+    + Credit Graeme Mathieson for initially packaging for Debian.
+  * Drop superfluous search.cpan.org URL in watch file (but keep
+    alternate author URL, in case a newer version again shows up only
+    there).
+  * Cleanup duplicate cdbs build-dependency in debian/rules.
+  * Semi-auto-update debian/control:
+      DEB_BUILD_OPTIONS=cdbs-autoupdate fakeroot debian/rules pre-build
+
+ -- Jonas Smedegaard <dr@jones.dk>  Fri, 12 Oct 2007 00:07:19 +0200
+
+libunix-syslog-perl (0.100-5) unstable; urgency=low
+
+  * Add Homepage hint to long description.
+  * Improve watch file:
+    + Bump to version 3.
+    + Tighten regexp: allow only digits, and escape dots in extensions.
+    + Add search pattern based on search.cpan.org/dist/ (in addition to
+      www.cpan.org/modules/by-module/ .../modules/by-author).
+    + Put search.cpan.org first (qa.debian.org use first entry).
+  * Improve cdbs tweaks:
+    + Add local snippet copyright-check.mk: Scan source for (c) changes.
+    + Add local snippet auto-update.mk: Enable auto-update feature.
+    + Add local snippet buildinfo.mk: Include env info with binary pkgs.
+  * No longer invoke buildinfo directly in debian/rules (done in cdbs).
+  * Bump to standards-version 3.7.2.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Sat, 12 Aug 2006 19:35:15 +0200
+
+libunix-syslog-perl (0.100-4) unstable; urgency=low
+
+  * Arrgh - a debian/rules file of only 4 lines (thanks to cdbs) and I
+    still manage to make an arror...: Properly include dh-buildinfo.
+  * Tighten build-dependency on debhelper to please linda.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Sun,  5 Sep 2004 21:16:21 +0200
+
+libunix-syslog-perl (0.100-3) unstable; urgency=low
+
+  * Repackaged using cdbs, and dh-buildinfo.
+  * Cleaned up debian/copyright:
+    + Replace info contained in changelog with note on "GNU systems".
+    + Mention "licensing info" together with copyright.
+  * Standards-version 3.6.1 (no changes needed).
+  * Rewrite watch file:
+    + Look for Unix-Syslog-.
+    + Include both default location and the one with newest version
+      (let's see how qa.debian.org handles that).
+
+ -- Jonas Smedegaard <dr@jones.dk>  Sun,  5 Sep 2004 20:44:32 +0200
+
+libunix-syslog-perl (0.100-2) unstable; urgency=low
+
+  * Adopt package (thanks, Graeme).
+  * Remove noise at end of this changelog.
+  * Change section to perl.
+  * Rewrite debian/copyright:
+    + Quote upstream copyright verbatim.
+    + Reorder topics to be similar to most other pckages.
+    + Add link to current version of the library.
+  * Lower build-dependency on perl as described in perl-policy 3.3 to
+    allow building on woody (closes: Bug#158724 - nevertheless).
+  * Switch debhelper hint from DH_COMPAT to debian/compat, and use v4.
+  * Change DEB_BUILD_OPTIONS to support noopt, and always compile with
+    -g.
+  * Remove unneeded cruft in debian/rules.
+  * Declare compliance with version 3.5.9 of Debian Policy.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Wed, 23 Apr 2003 21:07:36 +0200
+
+libunix-syslog-perl (0.100-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Graeme Mathieson <mathie@wossname.org.uk>  Sun, 29 Sep 2002 14:43:12 +0100
+
+libunix-syslog-perl (0.98-1.1) unstable; urgency=low
+
+  * NMU for perl 5.8.
+  * Bump perl build-dependency to >= 5.8.0-7 (closes: #158724).
+
+ -- Colin Watson <cjwatson@debian.org>  Sat, 31 Aug 2002 01:17:39 +0100
+
+libunix-syslog-perl (0.98-1) unstable; urgency=low
+
+  * New upstream release.
+  * Changed the maintainer's address.
+
+ -- Graeme Mathieson <mathie@wossname.org.uk>  Mon,  4 Feb 2002 04:55:03 +0000
+
+libunix-syslog-perl (0.97-1) unstable; urgency=low
+
+  * New upstream release.
+  * Added a watch file for uscan.
+
+ -- Graeme Mathieson <graeme@mathie.cx>  Wed, 12 Dec 2001 07:59:36 +0000
+
+libunix-syslog-perl (0.96-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Graeme Mathieson <graeme@mathie.cx>  Thu, 22 Nov 2001 17:54:42 +0000
+
+libunix-syslog-perl (0.95-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Graeme Mathieson <graeme@mathie.cx>  Thu, 23 Jul 2001 13:17:11 +0100

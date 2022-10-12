@@ -1,0 +1,24 @@
+Source: libunix-syslog-perl
+Maintainer: Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>
+Uploaders: Jonas Smedegaard <dr@jones.dk>,
+           Xavier Guimard <x.guimard@free.fr>
+Section: perl
+Testsuite: autopkgtest-pkg-perl
+Priority: optional
+Build-Depends: debhelper (>= 10),
+               perl
+Standards-Version: 4.2.0
+Vcs-Browser: https://salsa.debian.org/perl-team/modules/packages/libunix-syslog-perl
+Vcs-Git: https://salsa.debian.org/perl-team/modules/packages/libunix-syslog-perl.git
+Homepage: https://metacpan.org/release/Unix-Syslog
+
+Package: libunix-syslog-perl
+Architecture: any
+Depends: ${perl:Depends},
+         ${shlibs:Depends},
+         ${misc:Depends}
+Description: Perl interface to the UNIX syslog(3) calls
+ Unix::Syslog provides an interface to the system logger syslogd(8) via
+ Perl's XSUBs. The implementation attempts to resemble the native
+ libc-functions of your system, so that anyone being familiar with
+ syslog.h should be able to use this module right away.
